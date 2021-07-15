@@ -14,9 +14,9 @@ const TodoList = ({ todos, setTodos }) => {
 
 
     return (
-        <ul>
+        <ul className='divide-dotted divide-y-2 divide-yellow-200'>
             {todos.map(todo => (
-                <li key={todo.id} className={`pt-3 text-lg cursor-pointer ${todo.isComplete && 'text-gray-400 line-through'}`} onClick={() => markComplete(todo.id)}>{todo.todo}</li>
+                <li key={todo.id} className={`pt-2 text-lg cursor-pointer ${todo.isComplete && 'text-gray-400 line-through'}`} onClick={() => markComplete(todo.id)} data-testid='task-container'>{todo.todo}</li>
             ))}
         </ul>
     )

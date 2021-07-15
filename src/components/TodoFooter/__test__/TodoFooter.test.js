@@ -10,15 +10,16 @@ const MockTodoFooter = ({ numberOfTodos }) => {
   )
 }
 
-test('should render "task" when number of incomplete todos is one', async () => {
-  render(<MockTodoFooter numberOfTodos={1} />)
-  const paragraphElement = screen.getByText(/1 remaining task/i)
-  expect(paragraphElement).toBeInTheDocument()
-})
+describe('TodoFooter', () => {
+  test('should render "task" when number of incomplete todos is one', async () => {
+    render(<MockTodoFooter numberOfTodos={1} />)
+    const paragraphElement = screen.getByText(/1 remaining task/i)
+    expect(paragraphElement).toBeInTheDocument()
+  })
 
-
-test('should render "task" when number of incomplete todos is one', async () => {
-  render(<MockTodoFooter numberOfTodos={1} />)
-  const paragraphElement = screen.getByTestId('para')
-  expect(paragraphElement).toHaveTextContent('1 remaining task')
+  test('should render "task" when number of incomplete todos is one', async () => {
+    render(<MockTodoFooter numberOfTodos={1} />)
+    const paragraphElement = screen.getByTestId('para')
+    expect(paragraphElement.textContent).toBe('1 remaining task')
+  })
 })
