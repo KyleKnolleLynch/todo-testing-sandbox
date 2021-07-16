@@ -14,12 +14,11 @@ const FollowersList = () => {
         fetchFollowers()
     }, [])
 
-    console.log(followers)
     return (
         <ul className='divide-y-2 divide-dotted divide-yellow-200'>
-            {followers.map(follower => (
-                <li key={follower.login.uuid} className='mt-2 pt-2 flex items-center'>
-                    <img src={follower.picture.medium} alt="random follower" />
+            {followers.map((follower, index) => (
+                <li key={follower.login.uuid} className='mt-2 pt-2 flex items-center' data-testid={`follower-item-${index}`}>
+                    <img src={follower.picture.medium} alt="random follower" className='rounded-full' />
                     <div className='pl-10'>
                         <h4 className='text-lg'>{follower.name.first} {follower.name.last}</h4>
                         <p className='text-sm'>{follower.login.username}</p>

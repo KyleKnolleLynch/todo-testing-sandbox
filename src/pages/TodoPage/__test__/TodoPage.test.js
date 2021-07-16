@@ -29,18 +29,25 @@ describe('TodoPage', () => {
 
   test('should render multiple elements', async () => {
     render(<MockTodoPage />)
-    addTask(['Go to the park', 'Take a big dump', 'Shit some piss'])
+    addTask(['Go to the park', 'Walk my snakes', 'Eat lunch'])
     const liElement = screen.getAllByTestId('task-container')
     expect(liElement.length).toBe(3)
   })
 
 
-  test('task should not have isComplete task when initially rendered', async () => {
+  test('task should not have line-through when initially rendered', async () => {
     render(<MockTodoPage />)
     addTask(['Go to the park'])
     const liElement = screen.getByText(/Go to the park/i)
-    expect(liElement).not.toHaveClass('isComplete')
+    expect(liElement).not.toHaveClass('line-through')
   })
 
+  test('task should have line-through when clicked', async () => {
+    render(<MockTodoPage />)
+    addTask(['Go to the park'])
+    const liElement = screen.getByText(/Go to the park/i)
+    fireEvent.click(liElement)
+    expect(liElement).toHaveClass('line-through')
+  })
 })
- 
+  
